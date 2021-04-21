@@ -1,0 +1,82 @@
+[
+  {
+    "model": "language_tests.languagetesttype",
+    "pk": 1,
+    "fields": {
+      "name": "test_type_1",
+      "is_published": true
+    }
+  },
+  {
+    "model": "language_tests.languagetesttype",
+    "pk": 2,
+    "fields": {
+      "name": "test_type_2",
+      "is_published": true
+    }
+  },
+  {
+    "model": "language_tests.languagetesttype",
+    "pk": 3,
+    "fields": {
+      "name": "test_type_3",
+      "is_published": true
+    }
+  },
+  {
+    "model": "language_tests.languagetesttype",
+    "pk": 4,
+    "fields": {
+      "name": "test_type_4",
+      "is_published": true
+    }
+  },
+  {
+    "model": "language_tests.languagetesttype",
+    "pk": 5,
+    "fields": {
+      "name": "test_type_5",
+      "is_published": true
+    }
+  },
+  {
+    "model": "language_tests.languagetesttype",
+    "pk": 6,
+    "fields": {
+      "name": "test_type_6",
+      "is_published": false
+    }
+  },
+  {
+    "model": "language_tests.languagetesttype",
+    "pk": 7,
+    "fields": {
+      "name": "test_type_7",
+      "is_published": false
+    }
+  },
+  {
+    "model": "language_tests.languagetesttype",
+    "pk": 8,
+    "fields": {
+      "name": "test_type_8",
+      "is_published": false
+    }
+  },
+  {
+    "model": "language_tests.languagetesttype",
+    "pk": 9,
+    "fields": {
+      "name": "test_type_9",
+      "is_published": false
+    }
+  },
+  {
+    "model": "language_tests.languagetesttype",
+    "pk": 10,
+    "fields": {
+      "name": "test_type_10",
+      "is_published": false
+    }
+  }
+]
