@@ -1,6 +1,8 @@
+from datetime import datetime
 from typing import Sequence
 
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 from ..models import TestResult
 
@@ -27,6 +29,22 @@ class LanguageTestMixin:
             'email': 'test_user_1@example.com',
             'is_active': False,
             'last_login': None
+        },
+        'active_user': {
+            'username': 'test_user_2',
+            'password': default_test_users_password,
+            'email': 'test_user_2@example.com',
+            'is_active': True,
+            'last_login': datetime.now(tz=timezone.utc)
+        },
+        'admin': {
+            'username': 'admin',
+            'password': default_test_users_password,
+            'email': 'admin@example.com',
+            'is_active': True,
+            'is_staff': True,
+            'is_superuser': True,
+            'last_login': datetime.now(tz=timezone.utc)
         },
     }
 
