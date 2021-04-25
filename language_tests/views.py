@@ -6,22 +6,37 @@ from django.http import Http404
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 
-from .models import LanguageTestType, QuestionAnswer
+from .models import Answer, LanguageTestType, Question, QuestionAnswer
 from .serializers import (
-    LanguageTestTypeSerializer,
+    AnswerSerializer,
     LanguageTestSerializer,
+    LanguageTestTypeReadOnlySerializer,
+    LanguageTestTypeSerializer,
+    QuestionSerializer,
     TestResultSerializer
 )
 from .services import generate_questions_list
 
 
-class LanguageTestTypeList(generics.ListAPIView):
+class AnswerView(generics.CreateAPIView):
+    queryset = Answer.objects.all()
+    permission_classes = (permissions.IsAdminUser,)
+    serializer_class = AnswerSerializer
+
+
+class LanguageTestTypeListView(generics.ListAPIView):
     queryset = LanguageTestType.objects.filter(is_published=True)
     permission_classes = (permissions.AllowAny,)
+    serializer_class = LanguageTestTypeReadOnlySerializer
+
+
+class LanguageTestTypeView(generics.CreateAPIView):
+    queryset = LanguageTestType.objects.all()
+    permission_classes = (permissions.IsAdminUser,)
     serializer_class = LanguageTestTypeSerializer
 
 
-class LanguageTest(generics.RetrieveAPIView):
+class LanguageTestView(generics.RetrieveAPIView):
     permission_classes = (permissions.AllowAny,)
     serializer_class = LanguageTestSerializer
 
@@ -48,7 +63,13 @@ class LanguageTest(generics.RetrieveAPIView):
         return language_test
 
 
-class TestResult(generics.CreateAPIView):
+class QuestionView(generics.CreateAPIView):
+    queryset = Question.objects.all()
+    permission_classes = (permissions.IsAdminUser,)
+    serializer_class = QuestionSerializer
+
+
+class TestResultView(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny,)
     serializer_class = TestResultSerializer
 
@@ -78,6 +99,9 @@ class TestResult(generics.CreateAPIView):
         return {'right_answers': list(right_answers)}
 
 
-language_test = LanguageTest.as_view()
-language_test_type_list = LanguageTestTypeList.as_view()
-test_result = TestResult.as_view()
+answer = AnswerView.as_view()
+language_test = LanguageTestView.as_view()
+language_test_type = LanguageTestTypeView.as_view()
+language_test_type_list = LanguageTestTypeListView.as_view()
+question = QuestionView.as_view()
+test_result = TestResultView.as_view()
