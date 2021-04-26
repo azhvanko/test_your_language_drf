@@ -1,0 +1,70 @@
+// Get list test types
+GET http://localhost:8000/api/tests/
+Accept: application/json
+
+###
+
+// Get language test
+GET http://localhost:8000/api/tests/1/
+Accept: application/json
+
+###
+
+//Get test result
+POST http://localhost:8000/api/tests/result/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "user_answers": [
+    {"question_id": 1, "answer_id": 1},
+    {"question_id": 2, "answer_id": 1}
+  ]
+}
+
+###
+
+// Add new test answer
+POST http://localhost:8000/api/tests/add/answer/
+Accept: application/json
+Content-Type: application/json
+Authorization: Token {{admin_token}}
+
+{
+  "answer": "new_answer"
+}
+
+###
+
+// Add new test type
+POST http://localhost:8000/api/tests/add/test-type/
+Accept: application/json
+Content-Type: application/json
+Authorization: Token {{admin_token}}
+
+{
+  "name": "new_test_type",
+  "is_published": true
+}
+
+###
+
+// Add new question
+POST http://localhost:8000/api/tests/add/question/
+Accept: application/json
+Content-Type: application/json
+Authorization: Token {{admin_token}}
+
+{
+  "question": "new question ___ 1",
+  "is_published": true,
+  "test_type": 1,
+  "answers": [
+    {"answer": "answer_1", "is_right_answer": true},
+    {"answer": "answer_2", "is_right_answer": false},
+    {"answer": "answer_3", "is_right_answer": false},
+    {"answer": "answer_4", "is_right_answer": false}
+  ]
+}
+
+###
