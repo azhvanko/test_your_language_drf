@@ -34,7 +34,7 @@ class AnswerTest(LanguageTestViewsMixin, APITestCase):
             password=self.default_test_users_password
         )
         response = self.client.post(
-            '/tests/add/answer/',
+            '/api/tests/add/answer/',
             self.new_answer,
             format='json'
         )
@@ -80,7 +80,7 @@ class LanguageTestTest(LanguageTestViewsMixin, APITestCase):
     path_name = 'language_test'
 
     def test_view_url_exists_at_desired_location(self):
-        response = self.client.get('/tests/1/')
+        response = self.client.get('/api/tests/1/')
         self.assertEqual(response.status_code, 200)
 
     def test_view_url_accessible_by_name(self):
@@ -124,7 +124,7 @@ class LanguageTestTypeListTest(LanguageTestViewsMixin, APITestCase):
     path_name = 'language_test_type_list'
 
     def test_view_url_exists_at_desired_location(self):
-        response = self.client.get('/tests/')
+        response = self.client.get('/api/tests/')
         self.assertEqual(response.status_code, 200)
 
     def test_view_url_accessible_by_name(self):
@@ -152,7 +152,7 @@ class LanguageTestTypeTest(LanguageTestViewsMixin, APITestCase):
             password=self.default_test_users_password
         )
         response = self.client.post(
-            '/tests/add/test-type/',
+            '/api/tests/add/test-type/',
             self.new_test_type,
             format='json'
         )
@@ -225,7 +225,7 @@ class QuestionTest(LanguageTestViewsMixin, APITestCase):
             password=self.default_test_users_password
         )
         response = self.client.post(
-            '/tests/add/question/',
+            '/api/tests/add/question/',
             self.new_question,
             format='json'
         )
@@ -297,7 +297,7 @@ class TestResultTest(LanguageTestViewsMixin, APITestCase):
         return user_answers[key], user_answers['correct']['user_answers']
 
     def test_HTTP404_for_GET_request(self):
-        response = self.client.get('/tests/result/')
+        response = self.client.get('/api/tests/result/')
         self.assertEqual(response.status_code, 405)
 
     def test_HTTP404_for_GET_request_by_name(self):
